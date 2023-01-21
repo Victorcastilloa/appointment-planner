@@ -5,14 +5,19 @@ export const Tile = ({objects, deleteContact, deleteAppointment}) => {
   const arrayOfObjects = Object.values(objects);
 
   const handleDelete = (index) => {
-    if (window.confirm("Are you sure you want to delete this contact?")) {
+    
       if(objects.hasOwnProperty('name')){
+      
+       if (window.confirm('Are you sure you want to delete this contact?')){
         deleteContact(index);
+       } 
       } else if(objects.hasOwnProperty('title')){
+        if (window.confirm('Are you sure you want to delete this appointment?')) {
          deleteAppointment(index);
+        } 
       }
       
-    }
+    
   };
 
   return (
