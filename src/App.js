@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route, Redirect, NavLink } from "react-router-dom";
-
 import { AppointmentsPage } from "./containers/appointmentsPage/AppointmentsPage";
 import { ContactsPage } from "./containers/contactsPage/ContactsPage";
 
@@ -15,7 +14,7 @@ const savedAppointments = JSON.parse(localStorage.getItem('appointments'))
   const ROUTES = {
     CONTACTS: "/contacts",
     APPOINTMENTS: "/appointments",
-    MAIN: "/?"
+    MAIN: "/"
   };
 
 
@@ -98,10 +97,7 @@ function deleteAppointment(index) {
             deleteAppointment={deleteAppointment}
             />
           </Route>
-          <Route path="*">
-          <Redirect to={ROUTES.MAIN} />
-          </Route>
-        </Switch>
+         </Switch>
       </main>
     </>
   );
