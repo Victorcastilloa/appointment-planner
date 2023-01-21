@@ -1,4 +1,6 @@
 import React from "react";
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css'
 
 export const ContactForm = ({
   name,
@@ -18,13 +20,14 @@ export const ContactForm = ({
     placeholder="Contact name"
     required
     />
-    <input
-    type="tel"
+    <PhoneInput
+    defaultCountry="US"
     value={phone}
-    onChange={(e) => setPhone(e.target.value)}
+    onChange={setPhone}
     placeholder="Contact phone number"
-    maxLength="12"
-    minLength="9"
+    limitMaxLength={true}
+    focusInputOnCountrySelection={true}
+    autoComplete={true}
     required
     />
     <input 

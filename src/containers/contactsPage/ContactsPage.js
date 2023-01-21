@@ -9,7 +9,7 @@ export const ContactsPage = (props) => {
   */
   const {contacts, newContact, deleteContact} = props;
 const [name, setName]= useState('');
-const [phone, setPhone]= useState('');
+const [phone, setPhone]= useState(null);
 const [email, setEmail]= useState('');
 const [duplicate, setDuplicate]= useState(false)
 
