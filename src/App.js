@@ -15,6 +15,7 @@ const savedAppointments = JSON.parse(localStorage.getItem('appointments'))
   const ROUTES = {
     CONTACTS: "/contacts",
     APPOINTMENTS: "/appointments",
+    MAIN: "/?"
   };
 
 
@@ -96,6 +97,9 @@ function deleteAppointment(index) {
             newAppointment={newAppointment}
             deleteAppointment={deleteAppointment}
             />
+          </Route>
+          <Route path="*">
+          <Redirect to={ROUTES.MAIN} />
           </Route>
         </Switch>
       </main>
