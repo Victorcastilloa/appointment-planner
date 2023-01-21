@@ -1,6 +1,6 @@
 import React from "react";
 import { Tile } from '../tile/Tile'
-export const TileList = ({object, type}) => {
+export const TileList = ({object, type,deleteContact,deleteAppointment}) => {
 
 
   return (
@@ -10,6 +10,8 @@ export const TileList = ({object, type}) => {
       key={index}
       objects={objects}
       type={type}
+      deleteContact={deleteContact}
+      deleteAppointment={deleteAppointment}
       />
       )}
     </div>

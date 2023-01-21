@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Switch, Route, Redirect, NavLink } from "react-router-dom";
 
 import { AppointmentsPage } from "./containers/appointmentsPage/AppointmentsPage";
@@ -10,8 +10,10 @@ function App() {
   contacts and appointments 
   */
 
-  const [contacts, setContacts]= useState([]);
-  const [appointments, setAppointments]= useState([]);
+  const savedContacts = JSON.parse(localStorage.getItem('contacts'));
+const [contacts, setContacts] = useState(savedContacts || []);
+const savedAppointments = JSON.parse(localStorage.getItem('appointments'))
+  const [appointments, setAppointments]= useState(savedAppointments || []);
 
   const ROUTES = {
     CONTACTS: "/contacts",
@@ -34,6 +36,11 @@ function App() {
     [...prev, newContact])
   }
 
+  useEffect(()=> {
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+    localStorage.setItem('appointments', JSON.stringify(appointments))
+  }, [contacts,appointments])
+
   function newAppointment(title, contact, date, time) {
     const newAppointment= {
       title: title,
@@ -45,7 +52,25 @@ function App() {
     setAppointments((prev) => 
     [...prev, newAppointment]
     )
+
+    
   }
+
+  function deleteContact(index) {
+    
+  setContacts((prevContacts) => {
+    prevContacts.splice(index, 1);
+    return [...prevContacts];
+  });
+}
+
+function deleteAppointment(index) {
+    
+  setAppointments((prevAppointments) => {
+    prevAppointments.splice(index, 1);
+    return [...prevAppointments];
+  });
+}
 
   return (
     <>
@@ -67,6 +92,7 @@ function App() {
             <ContactsPage 
             contacts = {contacts}
             newContact= {newContact}
+            deleteContact= {deleteContact}
             />
           </Route>
           <Route path={ROUTES.APPOINTMENTS}>
@@ -75,6 +101,7 @@ function App() {
             appointments={appointments}
             contacts={contacts}
             newAppointment={newAppointment}
+            deleteAppointment={deleteAppointment}
             />
           </Route>
         </Switch>

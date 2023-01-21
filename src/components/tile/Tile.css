@@ -1,0 +1,14 @@
+.deletebtn {
+    width: 5rem;
+    background-color: red;
+    color:white;
+    margin-left: 20px;
+    border: 1px black outset;
+    cursor: pointer;
+}
+
+.deletebtn:active {
+background-color: white;
+color: red;
+border: 1px red inset;
+}

@@ -7,7 +7,7 @@ export const ContactsPage = (props) => {
   Define state variables for 
   contact info and duplicate check
   */
-  const {contacts, newContact} = props;
+  const {contacts, newContact, deleteContact} = props;
 const [name, setName]= useState('');
 const [phone, setPhone]= useState('');
 const [email, setEmail]= useState('');
@@ -69,6 +69,7 @@ useEffect(()=> {
         <TileList 
         object={contacts}
         type="contacts"
+        deleteContact={deleteContact}
         />
       </section>
     </div>
